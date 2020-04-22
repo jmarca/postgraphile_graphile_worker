@@ -1,0 +1,31 @@
+{
+  "name": "postgraphile_roles",
+  "version": "1.0.0",
+  "description": "Sqitch-based roles for postgraphile project",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "PGUSER=${PGUSER:=postgres} PGHOST=${PGHOST:=127.0.0.1} PGPORT=${PGPORT:=5432} PGDATABASE=${PGDATABASE:=sqitch} pg_prove test/*.sql",
+    "sqitch:deploy": "PGUSER=${PGUSER:=postgres} PGHOST=${PGHOST:=127.0.0.1} PGPORT=${PGPORT:=5432} PGDATABASE=${PGDATABASE:=sqitch} sqitch deploy",
+    "sqitch:revert": "PGUSER=${PGUSER:=postgres} PGHOST=${PGHOST:=127.0.0.1} PGPORT=${PGPORT:=5432} PGDATABASE=${PGDATABASE:=sqitch} sqitch revert -y",
+    "graphile-worker-install": "export PGUSER=${PGUSER:=postgres} PGHOST=${PGHOST:=127.0.0.1} PGPORT=${PGPORT:=5432} PGDATABASE=${PGDATABASE:=sqitch} DATABASE_URL=postgres://${PGUSER}@${PGHOST}:${PGPORT}/${PGDATABASE} GRAPHILE_WORKER_SCHEMA=graphile_worker && graphile-worker --schema-only",
+    "install": "npm run graphile-worker-install && npm run sqitch:deploy",
+    "preuninstall": "npm run sqitch:revert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "gitolite:a/jmarca/postgraphile_related/postgraphile_roles"
+  },
+  "author": "James E. Marca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jmarca/postgraphile_roles/issues"
+  },
+  "homepage": "https://github.com/jmarca/postgraphile_roles#readme",
+  "dependencies": {
+    "graphile-worker": "^0.5.0",
+    "postgraphile_extensions": "git+ssh://gitolite:a/jmarca/postgraphile_related/postgraphile_extensions"
+  }
+}
