@@ -1,5 +1,5 @@
 {
-  "name": "postgraphile_roles",
+  "name": "postgraphile_graphile_worker",
   "version": "1.0.0",
   "description": "Sqitch-based roles for postgraphile project",
   "main": "index.js",
