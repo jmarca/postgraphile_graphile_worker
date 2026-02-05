@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/jmarca/postgraphile_roles#readme",
   "dependencies": {
-    "graphile-worker": "^0.5.0",
+    "graphile-worker": "^0.16.6",
     "postgraphile_extensions": "git+ssh://gitolite:a/jmarca/postgraphile_related/postgraphile_extensions"
   }
 }
